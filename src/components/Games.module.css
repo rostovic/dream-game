@@ -1,0 +1,139 @@
+.mainDiv {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100vh;
+  background-color: lightgrey;
+}
+
+.gamesDiv {
+  display: flex;
+  height: 500px;
+  width: 100%;
+  flex-direction: column;
+}
+
+.gamesInnerDiv {
+  display: flex;
+  flex: 1;
+  gap: 40px;
+  justify-content: center;
+  align-items: center;
+}
+
+.paginationDiv {
+  display: flex;
+  height: 60;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.createGameButtonDiv {
+  display: flex;
+  height: 100px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.createGameButton {
+  padding: 0px;
+  background-color: grey;
+  border: 0px solid;
+  border-radius: 20px;
+  height: 3rem;
+  width: 10rem;
+  font-weight: 700;
+  color: white;
+}
+
+.createGameButton:hover {
+  cursor: pointer;
+  background-color: rgb(158, 156, 156);
+}
+
+.paginateDiv {
+  border: 2px solid rgb(104, 102, 102);
+  border-radius: 10px;
+  padding: 12px;
+  color: rgb(104, 102, 102);
+  font-weight: 700;
+}
+
+.paginateDiv:hover {
+  background: rgb(104, 102, 102);
+  color: white;
+}
+
+.paginateActiveDiv {
+  padding: 12px;
+  color: white;
+  border: 2px solid rgb(104, 102, 102);
+  background-color: rgb(104, 102, 102);
+  border-radius: 10px;
+  font-weight: 700;
+}
+
+.paginateDiv:hover {
+  cursor: pointer;
+}
+
+.loaderContainer {
+  height: 600px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 999;
+}
+
+.loader {
+  border: 8px solid #f3f3f3;
+  border-top: 6px solid #3498db;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loaderContainer_2 {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border-radius: 20px;
+  z-index: 999;
+  backdrop-filter: blur(1px);
+}
+
+.loader_2 {
+  border: 2px solid #f3f3f3;
+  border-top: 1px solid grey;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin2 1s linear infinite;
+}
+
+@keyframes spin2 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,81 @@
+:root {
+  --borderSize: 150px;
+}
+
+.borderLeft {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: var(--borderSize);
+  width: var(--borderSize);
+  border-right: 1px solid black;
+  border-bottom: 2px solid black;
+}
+
+.borderMiddle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: var(--borderSize);
+  width: var(--borderSize);
+  border-bottom: 2px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
+
+.borderRight {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: var(--borderSize);
+  width: var(--borderSize);
+  border-bottom: 2px solid black;
+  border-left: 1px solid black;
+}
+
+.borderLowerLeft {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: var(--borderSize);
+  width: var(--borderSize);
+  border-right: 1px solid black;
+}
+
+.borderLowerMiddle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: var(--borderSize);
+  width: var(--borderSize);
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+}
+
+.borderLowerRight {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: var(--borderSize);
+  width: var(--borderSize);
+  border-left: 1px solid black;
+}
+
+.cellHovered:hover {
+  cursor: pointer;
+  background-color: grey;
+}
+
+.errorButton {
+  background-color: grey;
+  border: 0px solid;
+  color: white;
+  height: 3rem;
+  width: 8rem;
+  border-radius: 20px;
+}
+
+.errorButton:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
