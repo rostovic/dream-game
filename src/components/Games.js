@@ -117,6 +117,8 @@ const Games = () => {
     );
   };
 
+  //main return
+
   return (
     <div className={classes.mainDiv}>
       {renderCreateGameButton()}

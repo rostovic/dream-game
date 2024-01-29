@@ -12,6 +12,7 @@ const Form = ({ type, navigateTo }) => {
   const passwordRef = useRef("");
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const login = async () => {
     setIsLoading(true);
@@ -34,6 +35,59 @@ const Form = ({ type, navigateTo }) => {
     const username = usernameRef.current.value;
     const password = passwordRef.current.value;
     const response = await createNewAccount(username, password);
+    if (response.status === "error") {
+      setError(response.message);
+    }
+  };
+
+  const renderIcon = (type) => {
+    if (type === "person") {
+      return (
+        <PersonIcon
+          sx={{
+            width: "20px",
+            height: "20px",
+            color: "grey",
+          }}
+        />
+      );
+    }
+    return (
+      <LockIcon
+        sx={{
+          width: "20px",
+          height: "20px",
+          color: "grey",
+        }}
+      />
+    );
+  };
+
+  const renderInput = (type) => {
+    if (type === "username") {
+      return (
+        <input
+          type="text"
+          ref={usernameRef}
+          placeholder={
+            type === "login" ? "Enter username" : "Pick a new username"
+          }
+          className={classes.usernameInput}
+          onClick={() => setError(null)}
+        />
+      );
+    }
+    return (
+      <input
+        type="password"
+        ref={passwordRef}
+        placeholder={
+          type === "login" ? "Enter password" : "Pick a new password"
+        }
+        className={classes.passwordInput}
+        onClick={() => setError(null)}
+      />
+    );
   };
 
   const renderButtons = () => {
@@ -72,59 +126,43 @@ const Form = ({ type, navigateTo }) => {
     );
   };
 
+  const renderIsLoading = () => {
+    if (!isLoading) {
+      return;
+    }
+    return (
+      <div className={classes.loaderContainer}>
+        <div className={classes.loader} />
+      </div>
+    );
+  };
+
+  const renderError = () => {
+    if (!error) {
+      return;
+    }
+    return (
+      <div className={classes.errorDiv}>
+        <span>{error}</span>
+      </div>
+    );
+  };
+
+  // main return
   return (
     <div className={classes.mainDiv}>
-      {isLoading && (
-        <div className={classes.loaderContainer}>
-          <div className={classes.loader} />
-        </div>
-      )}
+      {renderIsLoading()}
       <div className={classes.loginDiv}>
         <div className={classes.usernameDiv}>
-          <div className={classes.iconDiv}>
-            <PersonIcon
-              sx={{
-                width: "20px",
-                height: "20px",
-                color: "grey",
-              }}
-            />
-          </div>
-
-          <input
-            type="text"
-            ref={usernameRef}
-            placeholder={
-              type === "login" ? "Enter username" : "Pick a new username"
-            }
-            className={classes.usernameInput}
-          />
+          <div className={classes.iconDiv}>{renderIcon("person")}</div>
+          {renderInput("username")}
         </div>
         <div className={classes.passwordDiv}>
-          <div className={classes.iconDiv}>
-            <LockIcon
-              sx={{
-                width: "20px",
-                height: "20px",
-                color: "grey",
-              }}
-            />
-          </div>
-
-          <input
-            type="password"
-            ref={passwordRef}
-            placeholder={
-              type === "login" ? "Enter password" : "Pick a new password"
-            }
-            className={classes.passwordInput}
-          />
+          <div className={classes.iconDiv}>{renderIcon("lock")}</div>
+          {renderInput("password")}
         </div>
-        <div
-          style={{ display: "flex", flexDirection: "column", gap: "0.25rem" }}
-        >
-          {renderButtons()}
-        </div>
+        {renderError()}
+        <div className={classes.buttonsDiv}>{renderButtons()}</div>
       </div>
     </div>
   );

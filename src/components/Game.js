@@ -120,31 +120,8 @@ const Game = () => {
       return null;
     }
     return (
-      <div
-        style={{
-          display: "flex",
-          height: "100%",
-          width: "100%",
-          justifyContent: "center",
-          alignItems: "center",
-          position: "absolute",
-          zIndex: 999,
-          backdropFilter: "blur(4px)",
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            height: "200px",
-            width: "400px",
-            backgroundColor: "white",
-            justifyContent: "center",
-            alignItems: "center",
-            borderRadius: "20px",
-            gap: 30,
-          }}
-        >
+      <div className={classes.errorDiv}>
+        <div className={classes.innerErrorDiv}>
           <span>It is not your turn to play!</span>
           <button
             className={classes.errorButton}
@@ -158,63 +135,27 @@ const Game = () => {
   };
 
   if (!game) {
-    return;
+    return (
+      <div className={classes.loaderContainer}>
+        <div className={classes.loader} />
+      </div>
+    );
   }
 
+  //main return
+
   return (
-    <div
-      style={{
-        display: "flex",
-        flex: 1,
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        position: "relative",
-      }}
-    >
+    <div className={classes.mainDiv}>
       {erorrModal()}
-      <div
-        style={{
-          display: "flex",
-          width: "100%",
-          height: "60%",
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            flex: 1,
-            justifyContent: "center",
-            alignItems: "flex-end",
-          }}
-        >
-          <span style={{ fontWeight: "bold" }}>Player 1</span>
-          <span style={{ fontWeight: "bold" }}>
-            {game.first_player.username}
-          </span>
+      <div className={classes.playersGameDiv}>
+        <div className={classes.playerOneDiv}>
+          <span className={classes.boldText}>Player 1</span>
+          <span className={classes.boldText}>{game.first_player.username}</span>
         </div>
-        <div
-          style={{
-            display: "flex",
-            flex: 2,
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          {renderBorders()}
-        </div>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            flex: 1,
-            justifyContent: "center",
-            alignItems: "flex-start",
-          }}
-        >
-          <span style={{ fontWeight: "bold" }}>Player 1</span>
-          <span style={{ fontWeight: "bold" }}>
+        <div className={classes.gameDiv}>{renderBorders()}</div>
+        <div className={classes.playerTwoDiv}>
+          <span className={classes.boldText}>Player 1</span>
+          <span className={classes.boldText}>
             {game.second_player.username}
           </span>
         </div>

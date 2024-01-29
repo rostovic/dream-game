@@ -5,12 +5,19 @@
   background-color: lightgrey;
 }
 
+.mainHeaderDiv {
+  display: flex;
+  justify-content: space-between;
+  background-color: grey;
+  height: 50px;
+}
+
 .usernameDiv {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
-  width: 8rem;
+  width: 10rem;
   background-color: rgb(158, 156, 156);
   color: white;
   font-size: 16px;

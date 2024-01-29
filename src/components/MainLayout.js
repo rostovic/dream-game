@@ -23,14 +23,7 @@ const MainLayout = () => {
 
   const renderHeader = () => {
     return (
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          backgroundColor: "grey",
-          height: "50px",
-        }}
-      >
+      <div className={classes.mainHeaderDiv}>
         {isLoading && (
           <div className={classes.loaderContainer}>
             <div className={classes.loader} />
@@ -46,6 +39,8 @@ const MainLayout = () => {
       </div>
     );
   };
+
+  //main return
 
   return (
     <div className={classes.mainDiv}>

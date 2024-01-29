@@ -21,13 +21,14 @@ export const createNewAccount = async (username, password) => {
     clearTimeout(timeoutId);
 
     if (!response.ok) {
-      console.log("Request failed with status:", response.status);
-    } else {
-      const data = await response.json();
-      return data;
+      return {
+        status: "error",
+        message: "Unable to create an account! Enter other credentials",
+      };
     }
+    return { status: "success" };
   } catch (error) {
-    return "Unable to create an account! Try again later!";
+    return { status: "error", message: "Unable to process request!" };
   }
 };
 
