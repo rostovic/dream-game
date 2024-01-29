@@ -2,13 +2,14 @@ import { useContext, useState } from "react";
 import classes from "./MainLayout.module.css";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import { UserContext } from "../auth/auth";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { logoutUser } from "../api/api";
 
 const MainLayout = () => {
   const userCtx = useContext(UserContext);
   const username = userCtx.userData.username;
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
   const logoutHandler = () => {
     setIsLoading(true);
@@ -21,6 +22,10 @@ const MainLayout = () => {
     }, 500);
   };
 
+  const navigateToGames = () => {
+    navigate("/games");
+  };
+
   const renderHeader = () => {
     return (
       <div className={classes.mainHeaderDiv}>
@@ -29,10 +34,18 @@ const MainLayout = () => {
             <div className={classes.loader} />
           </div>
         )}
-        <div className={classes.usernameDiv}>
-          <span>Hello, {username}!</span>
+        <div style={{ display: "flex" }}>
+          <div className={classes.usernameDiv}>
+            <span>Hello, {username}!</span>
+          </div>
+          <button
+            className={classes.headerButtonStyle}
+            onClick={navigateToGames}
+          >
+            <span>GAMES</span>
+          </button>
         </div>
-        <button className={classes.logoutButton} onClick={logoutHandler}>
+        <button className={classes.headerButtonStyle} onClick={logoutHandler}>
           <ExitToAppIcon />
           <span>LOG OUT</span>
         </button>

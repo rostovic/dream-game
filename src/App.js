@@ -29,12 +29,15 @@ const App = () => {
   ]);
 
   let nonAuthRouter = createBrowserRouter([
-    { path: "/login", element: <Form type="login" navigateTo="/register" /> },
+    {
+      path: "/login",
+      element: <Form type="login" navigateTo="/register" key="login" />,
+    },
     {
       path: "/register",
-      element: <Form type="register" navigateTo="/login" />,
+      element: <Form type="register" navigateTo="/login" key="register" />,
     },
-    { path: "/*", element: <Navigate to="login" /> },
+    { path: "/*", element: <Navigate to="/login" /> },
   ]);
 
   const Root = () => {
