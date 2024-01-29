@@ -122,7 +122,7 @@ const Game = () => {
     return (
       <div className={classes.errorDiv}>
         <div className={classes.innerErrorDiv}>
-          <span>It is not your turn to play!</span>
+          <span className={classes.boldText}>It is not your turn to play!</span>
           <button
             className={classes.errorButton}
             onClick={() => setError(false)}

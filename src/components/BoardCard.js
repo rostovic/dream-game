@@ -178,23 +178,10 @@ const BoardCard = ({ game }) => {
     return null;
   };
 
-  const renderJoinGame = () => {
+  const renderJoinGameButton = () => {
     if (game.status === "open" && joinGame !== null && !isJoining) {
       return (
-        <div
-          style={{
-            display: "flex",
-            height: "100%",
-            width: "100%",
-            borderRadius: "20px",
-            backgroundColor: "transparent",
-            backdropFilter: "blur(2px)",
-            zIndex: 999,
-            position: "absolute",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
+        <div className={classes.joinGameDiv}>
           <button className={classes.joinButton} onClick={joinGameHandler}>
             {joinGame}
           </button>
@@ -203,20 +190,7 @@ const BoardCard = ({ game }) => {
     }
     if (game.status === "progress" && joinGame !== null && !isJoining) {
       return (
-        <div
-          style={{
-            display: "flex",
-            height: "100%",
-            width: "100%",
-            borderRadius: "20px",
-            backgroundColor: "transparent",
-            backdropFilter: "blur(2px)",
-            zIndex: 999,
-            position: "absolute",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
+        <div className={classes.joinGameDiv}>
           <button className={classes.joinButton} onClick={continueGameHandler}>
             {joinGame}
           </button>
@@ -225,97 +199,42 @@ const BoardCard = ({ game }) => {
     }
   };
 
+  const renderPlayerText = (player) => {
+    if (player === "1") {
+      return (
+        <>
+          <span>Player 1</span>
+          <span>{game.first_player.username}</span>
+        </>
+      );
+    }
+    return (
+      <>
+        <span>Player 2</span>
+        <span>
+          {game?.second_player !== null ? game.second_player.username : "N/A"}
+        </span>
+      </>
+    );
+  };
+
+  // main return
+
   return (
     <div
-      style={{
-        position: "relative",
-        height: "20rem",
-        width: "20rem",
-        backgroundColor: "white",
-        borderRadius: "20px",
-      }}
+      className={classes.boardCard}
       onMouseEnter={() => mouseEventHandler("enter")}
       onMouseLeave={() => mouseEventHandler("leave")}
     >
       {renderIsJoining()}
-      {renderJoinGame()}
-      <div
-        style={{
-          display: "flex",
-          height: "10%",
-          width: "100%",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        {gameStatus}
-      </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "70%",
-          width: "100%",
-        }}
-      >
-        {renderBorders()}
-      </div>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          height: "20%",
-          width: "100%",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            height: "30%",
-            width: "100%",
-            justifyContent: "center",
-            alignItems: "center",
-            fontSize: 14,
-          }}
-        >
-          {gameWinner()}
-        </div>
-        <div style={{ display: "flex", height: "70%", width: "100%" }}>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-              width: "50%",
-              height: "100%",
-              fontSize: 12,
-            }}
-          >
-            <span>Player 1</span>
-            <span>{game.first_player.username}</span>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-              width: "50%",
-              height: "100%",
-              fontSize: 12,
-            }}
-          >
-            <span>Player 2</span>
-            <span>
-              {game?.second_player !== null
-                ? game.second_player.username
-                : "N/A"}
-            </span>
-          </div>
+      {renderJoinGameButton()}
+      <div className={classes.statusTextDiv}>{gameStatus}</div>
+      <div className={classes.bordersDiv}>{renderBorders()}</div>
+      <div className={classes.informationGameDiv}>
+        <div className={classes.gameWinnerDiv}>{gameWinner()}</div>
+        <div className={classes.playerInformationDiv}>
+          <div className={classes.singlePlayerDiv}>{renderPlayerText("1")}</div>
+          <div className={classes.singlePlayerDiv}>{renderPlayerText("2")}</div>
         </div>
       </div>
     </div>

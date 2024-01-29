@@ -1,3 +1,74 @@
+.boardCard {
+  position: relative;
+  height: 20rem;
+  width: 20rem;
+  background-color: white;
+  border-radius: 20px;
+}
+
+.statusTextDiv {
+  display: flex;
+  height: 10%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.bordersDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70%;
+  width: 100%;
+}
+
+.informationGameDiv {
+  display: flex;
+  flex-direction: column;
+  height: 20%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.gameWinnerDiv {
+  display: flex;
+  height: 30%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+}
+
+.playerInformationDiv {
+  display: flex;
+  height: 70%;
+  width: 100%;
+}
+
+.singlePlayerDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 100%;
+  font-size: 12px;
+}
+
+.joinGameDiv {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  border-radius: 20px;
+  background-color: transparent;
+  backdrop-filter: blur(2px);
+  z-index: 999;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+}
+
 .borderLeft {
   display: flex;
   justify-content: center;
