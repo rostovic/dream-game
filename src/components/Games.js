@@ -17,7 +17,10 @@ const Games = () => {
       const response = await fetchGames(token);
       setGames(response.results);
     };
-    getGames();
+    const interval = setInterval(() => {
+      getGames();
+    }, 10000);
+    return () => clearInterval(interval);
   }, [token]);
 
   const createNewGameHandler = async () => {

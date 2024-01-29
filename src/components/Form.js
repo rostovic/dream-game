@@ -14,6 +14,8 @@ const Form = ({ type, navigateTo }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  console.log(type);
+
   const login = async () => {
     setIsLoading(true);
     const username = usernameRef.current.value;
@@ -63,8 +65,8 @@ const Form = ({ type, navigateTo }) => {
     );
   };
 
-  const renderInput = (type) => {
-    if (type === "username") {
+  const renderInput = (inputType) => {
+    if (inputType === "username") {
       return (
         <input
           type="text"
